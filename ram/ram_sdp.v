@@ -13,9 +13,9 @@
 // Additional Comments:
 //		DATA_WIDTH: (x:x >= 1)
 
-//  	ADDR_WIDTH: (x:2^x > RAM_DEPTH)
+//		ADDR_WIDTH: (x:2^x > RAM_DEPTH)
 
-//  	RAM_DEPTH:  (x:x >= 1)
+//		RAM_DEPTH:  (x:x >= 1)
 
 //		DOUT_PIPE_NUMBER: (x:x >= 0)
 //			Define the stage number of output registers for timing adjustment.
