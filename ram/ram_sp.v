@@ -1,22 +1,34 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company:
-// Engineer:
-//
-// Create Date: 2018/04/20 23:32:32
-// Design Name:
-// Module Name: ram_sp_rst
-// Project Name:
-// Target Devices:
-// Tool Versions:
+// Company: 
+// Engineer: YuunqiLiu
+// Create Date: 2019/6/20
+// Design Name: ram_sp
+// Target Devices:   7/U/U+ series FPGA/ZYNQ
+// Tool Versions: vivado 2018+
 // Description:
-//
-// Dependencies:
-//
-// Revision:
-// Revision 0.01 - File Created
+//		A singal port ram by verilog.
+// Dependencies: None
+// Revision: 
+// 		Revision 1.00 - File Created
 // Additional Comments:
-//
+//		DATA_WIDTH: (x:x >= 1)
+
+//  	ADDR_WIDTH: (x:2^x > RAM_DEPTH)
+
+//  	RAM_DEPTH:  (x:x >= 1)
+
+//		DOUT_PIPE_NUMBER: (x:x >= 0)
+//			Define the stage number of output registers for timing adjustment.
+//			Output registers may be retiming into block ram.
+
+//		RAM_TYPE: block/ultra/distributed/registers
+
+//		RAM_BEHAVIOR: read_first/write_first/no_change
+
+//		CASCADE_HEIGHT: (x:x>=1 or x=-1)
+//			x = -1 --- unlimited cascade height
+//			x >= 1 --- cascade height limit
 //////////////////////////////////////////////////////////////////////////////////
 
 
