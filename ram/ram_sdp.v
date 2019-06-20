@@ -6,7 +6,7 @@
 // Target Devices:   7/U/U+ series FPGA/ZYNQ
 // Tool Versions: vivado 2018+
 // Description:
-//		A singal dual port ram by verilog.
+//		A simple dual port ram by verilog.
 // Dependencies: None
 // Revision: 
 // 		Revision 1.00 - File Created
@@ -32,10 +32,10 @@ module ram_sdp #(
 	parameter DATA_WIDTH 				= 36,
     parameter ADDR_WIDTH 				= 14,
     parameter RAM_DEPTH 				= 1024,
-    parameter DOUT_PIPE_NUMBER 			= 10,
+    parameter DOUT_PIPE_NUMBER 			= 1,
     parameter RAM_TYPE 					= "block",
 	//block,ultra,distributed,registers
-	parameter CASCADE_HEIGHT 			= 100
+	parameter CASCADE_HEIGHT 			= -1
 	)(
 	input 					clka,
 	input 					ena,

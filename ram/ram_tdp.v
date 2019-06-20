@@ -1,16 +1,46 @@
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: YuunqiLiu
+// Create Date: 2019/6/20
+// Design Name: ram_tdp
+// Target Devices:   7/U/U+ series FPGA/ZYNQ
+// Tool Versions: vivado 2018+
+// Description:
+//		A true dual port ram by verilog.
+// Dependencies: None
+// Revision: 
+// 		Revision 1.00 - File Created
+// Additional Comments:
+//		DATA_WIDTH: (x:x >= 1)
 
+//  	ADDR_WIDTH: (x:2^x > RAM_DEPTH)
+
+//  	RAM_DEPTH:  (x:x >= 1)
+
+//		DOUT_PIPE_NUMBER: (x:x >= 0)
+//			Define the stage number of output registers for timing adjustment.
+//			Output registers may be retiming into block ram.
+
+//		RAM_TYPE: block/ultra/distributed/registers
+
+//		RAM_BEHAVIOR: read_first/write_first/no_change
+
+//		CASCADE_HEIGHT: (x:x>=1 or x=-1)
+//			x = -1 --- unlimited cascade height
+//			x >= 1 --- cascade height limit
+//////////////////////////////////////////////////////////////////////////////////
 
 
 module ram_tdp #(
 	parameter DATA_WIDTH 				= 36,
     parameter ADDR_WIDTH 				= 14,
     parameter RAM_DEPTH 				= 1024,
-    parameter DOUT_PIPE_NUMBER 			= 10,
-    parameter RAM_TYPE 					= "ultra",
+    parameter DOUT_PIPE_NUMBER 			= 1,
+    parameter RAM_TYPE 					= "block",
 	//block,ultra,distributed,registers
 	parameter RAM_BEHAVIOR 				= "read_first",
 	//read_first,write_first,no_change
-	parameter CASCADE_HEIGHT 			= 100
+	parameter CASCADE_HEIGHT 			= -1
 	)(
 	input 					clka,
 	input 					ena,

@@ -1,4 +1,3 @@
-`timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: YuunqiLiu
@@ -36,12 +35,12 @@ module ram_sp #(
     parameter DATA_WIDTH 				= 36,
     parameter ADDR_WIDTH 				= 14,
     parameter RAM_DEPTH 				= 4096,
-    parameter DOUT_PIPE_NUMBER 			= 4,
-    parameter RAM_TYPE 					= "ultra",
+    parameter DOUT_PIPE_NUMBER 			= 1,
+    parameter RAM_TYPE 					= "block",
 	//block,ultra,distributed,registers
 	parameter RAM_BEHAVIOR 				= "read_first",
 	//read_first,write_first,no_change
-	parameter CASCADE_HEIGHT 			= 100
+	parameter CASCADE_HEIGHT 			= -1
     )(
     input 					clk,
     input 					en,
