@@ -29,25 +29,25 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module ram_sdp #(
-	parameter DATA_WIDTH 				= 36,
-    parameter ADDR_WIDTH 				= 14,
-    parameter RAM_DEPTH 				= 1024,
-    parameter DOUT_PIPE_NUMBER 			= 1,
-    parameter RAM_TYPE 					= "block",
+	parameter DATA_WIDTH          = 36,
+  parameter ADDR_WIDTH          = 14,
+  parameter RAM_DEPTH           = 1024,
+  parameter DOUT_PIPE_NUMBER    = 1,
+  parameter RAM_TYPE            = "block",
 	//block,ultra,distributed,registers
-	parameter CASCADE_HEIGHT 			= -1
+	parameter CASCADE_HEIGHT      = -1
 	)(
-	input 					clka,
-	input 					ena,
-	input 					wea,
+	input 					        clka,
+	input 					        ena,
+	input 					        wea,
 	input [ADDR_WIDTH-1:0] 	addra,
 	input [DATA_WIDTH-1:0] 	dina,
 
 	input                   clkb,
-	input 					enb,
+	input 					        enb,
 	input [ADDR_WIDTH-1:0] 	addrb,
 	output [DATA_WIDTH-1:0] doutb,
-	output 					doutb_valid
+	output 					        doutb_valid
 	);
 
 	integer i;
