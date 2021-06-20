@@ -20,8 +20,8 @@ module reg_slice #(
     logic dat_rst_n;
 
     generate 
-        if(NO_DATA_RESET == 1'b1)   dat_rst_n = 1'b1;
-        else                        dat_rst_n = rst_n;
+        if(NO_DATA_RESET == 1'b1)   assign dat_rst_n = 1'b1;
+        else                        assign dat_rst_n = rst_n;
     endgenerate
 
     generate
@@ -61,19 +61,22 @@ module reg_slice #(
     //Register Slice -- forward
     else if (REG_SLICE_TYPE == "FORWARD") begin:rs_forward
 
-        logic rst_lock_n;
+        logic rst_lock_n    ;
+        logic buf_load_en   ;
+
+        assign buf_load_en = m_rdy || (~m_vld);
 
         always_ff @(posedge clk or negedge rst_n) begin
-            if(~rst_n)      m_vld <= 1'b0;
-            else if(m_rdy)  m_vld <= s_vld;
+            if(~rst_n)              m_vld <= 1'b0;
+            else if(buf_load_en)    m_vld <= s_vld;
         end
 
         always_ff @(posedge clk or negedge dat_rst_n) begin
-            if(~dat_rst_n)  m_pld <= {$bits(PLD_TYPE){1'b0}};
-            else if(m_rdy)  m_pld <= s_pld;
+            if(~dat_rst_n)          m_pld <= {$bits(PLD_TYPE){1'b0}};
+            else if(buf_load_en)    m_pld <= s_pld;
         end
 
-        assign s_rdy = ( m_rdy || (~m_vld) ) && rst_lock_n;
+        assign s_rdy = buf_load_en && rst_lock_n;
 
         always_ff @(posedge clk or negedge rst_n) begin
             if(~rst_n)  rst_lock_n <= 1'b0;
